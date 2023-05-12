@@ -6,7 +6,7 @@ VALUES
   ('Charlie3', 'hashed_password3');
 
 -- Insert data into the "transactions" table
-INSERT INTO transactions (type, amount, date, user_id)
+INSERT INTO transactions (type, amount, user_id)
 VALUES
   ('Withdrawal', 50.25, 1),
   ('Deposit', 100.00, 1),

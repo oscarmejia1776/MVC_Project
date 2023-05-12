@@ -10,26 +10,29 @@ body {
   margin-left: 700px;
 }
 
+#container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+
 #login-box {
   background-color: #eb455f;
   width: 350px;
   height: 400px;
-  position: relative;
-  margin-top: 30px;
-  margin-left: 40%;
   border: 1px solid black;
   border-radius: 10%;
 }
 
 #Username {
-  width: 80%;
+  width: 280px;
   margin-left: 30px;
   margin-top: 100px;
   position: absolute;
 }
 
 #Password {
-  width: 80%;
+  width: 280px;
   margin-left: 30px;
   margin-top: 160px;
   position: absolute;
@@ -41,4 +44,76 @@ body {
   padding-left: 120px;
   padding-right: 120px;
   border: 1px solid black;
+}
+
+#piggy_bank {
+  display: none;
+  background-color: #eb455f;
+  width: 600px;
+  height: 450px;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+
+#grid_container {
+  height: 450px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  align-items: center;
+  background-color: #f5ebe0;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+
+.goal {
+  grid-column: span 2;
+}
+
+.trans_history {
+  grid-row: span 2;
+}
+
+.trans_input {
+  grid-column: span 2;
+  order: 1;
+}
+
+.goal_info {
+  background-color: green;
+  height: 50px;
+  width: 80%;
+  margin-left: 10px;
+  /* margin-top: 100x; */
+}
+
+#trans_amount {
+  width: 280px;
+  margin-left: 10px;
+  margin-top: 100x;
+  position: absolute;
+}
+
+.transaction-button {
+  /* margin-top: 140px; */
+  margin-left: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1px solid black;
+}
+
+.transaction {
+  background-color: green;
+  height: 50px;
+  width: 80%;
+  margin-left: 10px;
+  margin-top: 100x;
 }

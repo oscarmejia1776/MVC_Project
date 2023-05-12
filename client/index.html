@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Investment Studio</a>
+        <a class="navbar-brand" href="#">Piggy Bank</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,28 +46,65 @@
         </div>
       </div>
     </nav>
-    <div id="login-box">
-      <div id="Username" class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
+    <div id="container">
+      <div id="login-box">
+        <div id="Username" class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div id="Password" class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Password"
+            aria-label="Password"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <button id="login-button" class="btn btn-primary" type="button">
+          Login
+        </button>
       </div>
-      <div id="Password" class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Password"
-          aria-label="Password"
-          aria-describedby="basic-addon1"
-        />
+      <div id="piggy_bank">
+        <div id="grid_container">
+          <div id="goal_display" class="item goal">
+            <div id="goal-ratio" class="goal_info"></div>
+            <div id="goal-total" class="goal_info"></div>
+            <div id="goal-difference" class="goal_info"></div>
+          </div>
+          <div id="transaction_history" class="item trans_history"></div>
+          <div id="transaction_input" class="item trans_input">
+            <div id="trans_amount" class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Type in Amount"
+                aria-label="Password"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <button
+              id="deposit-button"
+              class="btn btn-success transaction-button"
+              type="button"
+            >
+              Deposit
+            </button>
+            <button
+              id="withdrawal-button"
+              class="btn btn-danger transaction-button"
+              type="button"
+            >
+              Withdrawl
+            </button>
+          </div>
+        </div>
       </div>
-      <button id="login-button" class="btn btn-primary" type="button">
-        Login
-      </button>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
