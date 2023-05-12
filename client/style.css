@@ -1,0 +1,44 @@
+body {
+  background-color: #fcffe7;
+}
+
+.navbar {
+  background-color: #2b3467;
+}
+
+#Home {
+  margin-left: 700px;
+}
+
+#login-box {
+  background-color: #eb455f;
+  width: 350px;
+  height: 400px;
+  position: relative;
+  margin-top: 30px;
+  margin-left: 40%;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+
+#Username {
+  width: 80%;
+  margin-left: 30px;
+  margin-top: 100px;
+  position: absolute;
+}
+
+#Password {
+  width: 80%;
+  margin-left: 30px;
+  margin-top: 160px;
+  position: absolute;
+}
+
+#login-button {
+  margin-top: 300px;
+  margin-left: 30px;
+  padding-left: 120px;
+  padding-right: 120px;
+  border: 1px solid black;
+}
