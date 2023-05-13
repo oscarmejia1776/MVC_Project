@@ -12,7 +12,7 @@ CREATE TABLE users (
 CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
   type VARCHAR(255) NOT NULL,
-  amount MONEY NOT NULL,
+  amount INTEGER NOT NULL,
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES users(id)

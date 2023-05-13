@@ -12,12 +12,19 @@ let showPiggyBank = (userId) => {
     .then((res) => res.json())
     .then((data) => {
       console.log("transactions", data);
+      let totalAmount = 0;
       for (let i = 0; i < data.length; i++) {
+        const DATE_OBJ = new Date(data[i].date);
+        const SHORT_DATE = DATE_OBJ.toLocaleDateString();
+        const SHORT_TIME = DATE_OBJ.toLocaleTimeString();
+        const AMOUNT = data[i].amount;
+        totalAmount += AMOUNT;
         const TRANSACTION = $("<div></div>")
           .attr("class", "transaction")
-          .text(`${data[i].amount}`);
+          .text(`Amount: $${AMOUNT} Date: ${SHORT_DATE} Time: ${SHORT_TIME}`);
         $("#transaction_history").append(TRANSACTION);
       }
+      $("#goal-total").text(`Total: $${totalAmount}`);
     });
   //iterate through parsed data find sum of all transactions
   //store value in a variable called total
