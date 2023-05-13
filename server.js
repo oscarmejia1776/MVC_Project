@@ -78,7 +78,9 @@ server.get("/transactions/:user_id", (req, res) => {
 });
 ///////////////////////////Post New Transaction/////////////////////////
 server.post("/transactions", (req, res) => {
-  const { type, amount, user_id } = req.body;
+  const type = req.body.type;
+  const amount = Number(req.body.amount);
+  const user_id = Number(req.body.user_id);
 
   if (!type || !amount || !user_id) {
     res.status(422);
@@ -96,7 +98,7 @@ server.post("/transactions", (req, res) => {
 });
 //////////////////////////Delete Transaction//////////////////////////////
 server.delete("/transactions/:id", (req, res) => {
-  const transactions_id = Number(req.body.id);
+  const transactions_id = Number(req.params.id);
 
   if (Number.isNaN(transactions_id)) {
     res.status(422);

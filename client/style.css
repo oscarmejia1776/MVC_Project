@@ -111,10 +111,23 @@ body {
 }
 
 .transaction {
+  position: relative;
   background-color: green;
-  height: 50px;
+  height: 60px;
   width: 80%;
   margin-left: 10px;
-  margin-top: 100x;
+  margin-top: 10x;
   font-size: small;
+}
+
+p {
+  margin: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
