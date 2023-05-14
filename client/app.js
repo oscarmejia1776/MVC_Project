@@ -52,7 +52,18 @@ function createTransaction(obj) {
     .append($("<p></p>").text(`Time: ${SHORT_TIME}`));
   $("#transaction_history").append(TRANSACTION);
 }
-///////////////////////////////////////Show Piggy Bank Function////////////////////////////////////////////////
+////////////////////////Sign-Up & Login Button/////////////////////////////////////////
+$("#signup").on("click", () => {
+  $("#start-box").show();
+  $("#login-box").hide();
+});
+
+$("#start").on("click", () => {
+  $("#login-box").show();
+  $("#start-box").hide();
+});
+
+////////////////////Show Piggy Bank Function///////////////////////////////////////////
 let showPiggyBank = (userId) => {
   //hide the div with id 'login-box'
   $("#login-box").hide();

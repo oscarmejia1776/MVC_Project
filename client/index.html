@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Piggy Bank</a>
+        <a style="color: #C651CD" class="navbar-brand" href="#">Piggy Bank</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,27 +29,45 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li id="Home" class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">IDK Yet</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Financial News</a>
-            </li>
-          </ul>
+          <div id="nav_buttons">
+            <button id="signup" type="button" class="btn btn-dark">Sign Up</button>
+            <button id="start" type="button" class="btn btn-dark">Login</button>
+          </div>
         </div>
       </div>
     </nav>
     <div id="container">
-      <div id="login-box">
-        <div id="Username" class="input-group">
+      <div id="start-box" class="login-box">
+        <div id="newUsername" class="input-group username">
           <input
+            id="newUsername-input"
+            style="color: #363636"
+            type="text"
+            class="form-control"
+            placeholder="Create Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div id="newPassword" class="input-group password">
+          <input
+            id="newPassword-input"
+            type="text"
+            class="form-control"
+            placeholder="Create Password"
+            aria-label="Password"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <button id="create" class="btn btn-primary login-button" type="button">
+          Login
+        </button>
+      </div>
+      <div id="login-box" class="login-box">
+        <div id="Username" class="input-group username">
+          <input
+            id="username-input"
+            style="color: #363636"
             type="text"
             class="form-control"
             placeholder="Username"
@@ -57,8 +75,9 @@
             aria-describedby="basic-addon1"
           />
         </div>
-        <div id="Password" class="input-group">
+        <div id="Password" class="input-group password">
           <input
+            id="password-input"
             type="text"
             class="form-control"
             placeholder="Password"
@@ -66,7 +85,7 @@
             aria-describedby="basic-addon1"
           />
         </div>
-        <button id="login-button" class="btn btn-primary" type="button">
+        <button id="login-button" class="btn btn-primary login-button" type="button">
           Login
         </button>
       </div>
@@ -74,9 +93,9 @@
         <div id="grid_container">
           <div id="goal_display" class="item goal">
             <div id="goal-ratio" class="goal_info"></div>
-            <div id="savings" class="goal_info"></div>
-            <form id="actual-goal" class="goal_info">
-              <input id="goal-input"></input>
+            <div  id="savings" class="goal_info"></div>
+            <form  id="actual-goal" class="goal_info">
+              <input id="goal-input" style="background-color: #1B1B1B; color: #8739F9;"></input>
             </form>
           </div>
           <div id="transaction_history" class="item trans_history"></div>
@@ -88,6 +107,7 @@
                 placeholder="Type in Amount"
                 aria-label="Password"
                 aria-describedby="basic-addon1"
+                style="background-color: #363636; color:#C651CD"
               />
             </div>
             <button

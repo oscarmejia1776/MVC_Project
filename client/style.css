@@ -1,9 +1,20 @@
 body {
-  background-color: #fcffe7;
+  background-color: #363636;
 }
 
 .navbar {
-  background-color: #2b3467;
+  background-color: #100f10;
+  color: #c651cd;
+}
+
+#nav_buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 80%;
+}
+
+#start {
+  margin-left: 10px;
 }
 
 #Home {
@@ -16,42 +27,53 @@ body {
   margin-top: 25px;
 }
 
-#login-box {
-  background-color: #eb455f;
+#signup-box {
+  display: none;
+  background-color: #1b1b1b;
   width: 350px;
   height: 400px;
   border: 1px solid black;
   border-radius: 10%;
 }
 
-#Username {
+.login-box {
+  display: none;
+  background-color: #1b1b1b;
+  width: 350px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 10%;
+}
+
+.username {
   width: 280px;
   margin-left: 30px;
   margin-top: 100px;
   position: absolute;
 }
 
-#Password {
+.password {
   width: 280px;
   margin-left: 30px;
   margin-top: 160px;
   position: absolute;
 }
 
-#login-button {
+.login-button {
   margin-top: 300px;
   margin-left: 30px;
   padding-left: 120px;
   padding-right: 120px;
+  background-color: #8739f9;
   border: 1px solid black;
 }
 
 #piggy_bank {
   display: none;
-  background-color: #eb455f;
+  background-color: #363636;
   width: 600px;
   height: 450px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10%;
 }
 
@@ -61,6 +83,7 @@ body {
   gap: 1rem;
   grid-template-columns: 1fr 1fr 1.5fr;
   grid-template-rows: 1fr 1fr;
+  background-color: #363636;
 }
 
 .item {
@@ -69,8 +92,8 @@ body {
   justify-content: space-around;
   gap: 1rem;
   align-items: center;
-  background-color: #f5ebe0;
-  border: 1px solid black;
+  background-color: #242424;
+  /* border: 1px solid black; */
   border-radius: 10%;
 }
 
@@ -88,11 +111,14 @@ body {
 }
 
 .goal_info {
-  background-color: green;
+  background-color: #1b1b1b;
   height: 50px;
   width: 80%;
+  color: #8739f9;
+  text-align: center;
   margin-left: 10px;
   /* margin-top: 100x; */
+  border-radius: 5%;
 }
 
 #trans_amount {
@@ -112,12 +138,14 @@ body {
 
 .transaction {
   position: relative;
-  background-color: green;
+  background-color: #1b1b1b;
   height: 60px;
   width: 80%;
   margin-left: 10px;
   margin-top: 10x;
+  color: #8739f9;
   font-size: small;
+  border-radius: 10%;
 }
 
 p {
