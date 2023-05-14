@@ -1,5 +1,6 @@
 var USER_ID;
 var totalAmount = 0;
+var goalAmount = 0;
 ///////////////////////createTransaction Function/////////////////////////////////////////
 function createTransaction(obj) {
   const DATE_OBJ = new Date(obj.date);
@@ -26,7 +27,7 @@ function createTransaction(obj) {
           );
           console.log(amount);
           totalAmount -= amount;
-          $("#goal-total").text(`Total: $${totalAmount}`);
+          $("#savings").text(`Total: $${totalAmount}`);
 
           // Send DELETE request to remove transaction from the database
           fetch(`/transactions/${transactionId}`, {
@@ -70,11 +71,9 @@ let showPiggyBank = (userId) => {
       for (let i = 0; i < data.length; i++) {
         createTransaction(data[i]);
       }
-      $("#goal-total").text(`Total: $${totalAmount}`);
+      $("#savings").text(`Savings: $${totalAmount}`);
+      $("#goal-input").val(goalAmount);
     });
-  //iterate through parsed data find sum of all transactions
-  //store value in a variable called total
-  //display total amount and transaction by appending them to the DOM.
 };
 ///////////////////Login Button////////////////////////////
 $("#login-button").on("click", () => {
@@ -92,6 +91,7 @@ $("#login-button").on("click", () => {
       console.log("user data", data);
       const STORED_PASSWORD = data.password;
       USER_ID = data.id;
+      goalAmount = Number(data.goal);
 
       if (password === STORED_PASSWORD) {
         showPiggyBank(USER_ID);
@@ -125,7 +125,7 @@ $("#deposit-button").on("click", () => {
       // Perform any additional operations after the transaction is created
       //create another transaction div here and add it into transaction history
       createTransaction(data);
-      $("#goal-total").text(`Total: $${totalAmount}`);
+      $("#savings").text(`Total: $${totalAmount}`);
     });
 });
 
@@ -155,6 +155,31 @@ $("#withdrawal-button").on("click", () => {
       // Perform any additional operations after the transaction is created
       //create another transaction div here and add it into transaction history
       createTransaction(data);
-      $("#goal-total").text(`Total: $${totalAmount}`);
+      $("#savings").text(`Total: $${totalAmount}`);
+    });
+});
+
+///////////////Update GOal/////////////////////
+$("#actual-goal").on("submit", (event) => {
+  event.preventDefault();
+  const goal = parseInt($("#goal-input").val());
+  const goalObj = {
+    goal: goal,
+  };
+  fetch(`/users/${USER_ID}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(goalObj),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Goal Updated", data);
+      goalAmount = goal;
+      $("#goal-input").val(goalAmount);
+    })
+    .catch((error) => {
+      console.error("Error updating goal amount", error);
     });
 });

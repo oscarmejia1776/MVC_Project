@@ -44,7 +44,7 @@ server.get("/users/:username", (req, res) => {
   }
 
   db.query(
-    "SELECT id, password FROM users WHERE username = $1",
+    "SELECT id, password, goal FROM users WHERE username = $1",
     [username],
     (error, result) => {
       if (result.rows.length === 0) {
@@ -113,6 +113,30 @@ server.delete("/transactions/:id", (req, res) => {
   ).then((result) => {
     if (result.rows.length === 0) {
       res.status(404);
+    } else {
+      res.send(result.rows[0]);
+    }
+  });
+});
+//////////////////////Update(PATCH) Goal Amount////////////////////////////////////
+server.patch("/users/:id", (req, res) => {
+  const user_id = Number(req.params.id);
+  const goal = Number(req.body.goal);
+
+  if (Number.isNaN(user_id) || Number.isNaN(goal)) {
+    res.sendStatus(422);
+    return;
+  }
+
+  db.query(
+    `UPDATE users
+     SET goal = $1
+     WHERE id = $2
+     RETURNING *`,
+    [goal, user_id]
+  ).then((result) => {
+    if (result.rows.length === 0) {
+      res.sendStatus(404);
     } else {
       res.send(result.rows[0]);
     }

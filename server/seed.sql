@@ -1,9 +1,9 @@
 -- Insert data into the "users" table
-INSERT INTO users (username, password)
+INSERT INTO users (username, password, goal)
 VALUES
-  ('Alice1', 'hashed_password1'),
-  ('Bob2', 'hashed_password2'),
-  ('Charlie3', 'hashed_password3');
+  ('A', '1', 100),
+  ('Bob2', 'hashed_password2', 100),
+  ('Charlie3', 'hashed_password3', 100);
 
 -- Insert data into the "transactions" table
 INSERT INTO transactions (type, amount, user_id)
