@@ -62,11 +62,35 @@ $("#start").on("click", () => {
   $("#login-box").show();
   $("#start-box").hide();
 });
+///////////////////////////Create New User/////////////////////////////////////////////
+$("#create").on("click", () => {
+  let username = $("#newUsername-input").val();
+  let password = $("#newPassword-input").val();
+
+  const newUserData = {
+    username: username,
+    password: password,
+    goal: 0,
+  };
+
+  fetch(`/users`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUserData),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      USER_ID = data.id;
+      showPiggyBank(USER_ID);
+    });
+});
 
 ////////////////////Show Piggy Bank Function///////////////////////////////////////////
 let showPiggyBank = (userId) => {
   //hide the div with id 'login-box'
-  $("#login-box").hide();
+  $(".login-box").hide();
   $("#piggy_bank").show();
   //make a get request to retrieve all transactions from user with USER_ID
   fetch(`/transactions/${userId}`, {

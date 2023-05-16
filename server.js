@@ -16,23 +16,41 @@ server.use(express.static("client"));
 server.use(express.json());
 
 //////////////////////////////Create New User////////////////////////////////
+
 server.post("/users", (req, res) => {
   const { username, password } = req.body;
+  const goal = Number(req.body.goal);
 
-  if (!username || !password) {
-    res.status(422);
+  if (!username || !password || isNaN(goal)) {
+    res.status(422).end();
     return;
   }
 
-  db.query(
-    `INSERT INTO users (username, password)
-     VALUES ($1, $2)
-     RETURNING *`,
-    [username, password]
-  ).then((result) => {
-    res.send(result.rows[0]).status(201);
-  });
+  db.query("SELECT username FROM users WHERE username = $1", [username])
+    .then((existingUser) => {
+      if (existingUser.rows.length === 0) {
+        return db.query(
+          `INSERT INTO users (username, password, goal)
+         VALUES ($1, $2, $3)
+         RETURNING *`,
+          [username, password, goal]
+        );
+      } else {
+        res.status(422).send("Username Already Taken");
+        throw new Error("Username Already Taken");
+      }
+    })
+    .then((newUser) => {
+      res.status(201).send(newUser.rows[0]);
+    })
+    .catch((error) => {
+      console.error("Error executing database query:", error);
+      if (!res.headersSent) {
+        res.sendStatus(500);
+      }
+    });
 });
+
 //////////////////////////Get Users Password////////////////////////////
 //Also requesting id so user_id variable can be stored on the front end in order to make transaction requests.
 server.get("/users/:username", (req, res) => {
@@ -68,11 +86,7 @@ server.get("/transactions/:user_id", (req, res) => {
     "SELECT * FROM transactions WHERE user_id = $1 ORDER BY date DESC",
     [user_id],
     (error, result) => {
-      if (result.rows.length === 0) {
-        res.sendStatus(404);
-      } else {
-        res.send(result.rows);
-      }
+      res.send(result.rows);
     }
   );
 });
