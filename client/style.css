@@ -13,6 +13,22 @@ body {
   width: 512px;
 }
 
+#intro-text {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+#large-text {
+  font-size: x-large;
+  margin-top: 200px;
+  margin-right: 20px;
+}
+
+#small-text {
+  font-size: small;
+  margin-top: 50px;
+}
+
 .navbar {
   background-color: #100f10;
   color: #c651cd;
@@ -53,7 +69,7 @@ body {
   width: 350px;
   height: 400px;
   border: 1px solid black;
-  border-radius: 10%;
+  border-radius: 20px;
 }
 
 .username {
@@ -72,7 +88,6 @@ body {
 
 .login-button {
   margin-top: 300px;
-  margin-left: 30px;
   padding-left: 120px;
   padding-right: 120px;
   background-color: #8739f9;
@@ -85,7 +100,7 @@ body {
   width: 600px;
   height: 450px;
   /* border: 1px solid black; */
-  border-radius: 10%;
+  border-radius: 20px;
 }
 
 #grid_container {
@@ -105,7 +120,7 @@ body {
   align-items: center;
   background-color: #242424;
   /* border: 1px solid black; */
-  border-radius: 10%;
+  border-radius: 20px;
 }
 
 .goal {
@@ -117,37 +132,6 @@ body {
   grid-row: span 2;
 }
 
-.trans_input {
-  grid-column: span 2;
-  order: 1;
-}
-
-.goal_info {
-  background-color: #1b1b1b;
-  height: 50px;
-  width: 80%;
-  color: #8739f9;
-  text-align: center;
-  margin-left: 10px;
-  /* margin-top: 100x; */
-  border-radius: 5%;
-}
-
-#trans_amount {
-  width: 280px;
-  margin-left: 10px;
-  margin-top: 100x;
-  position: absolute;
-}
-
-.transaction-button {
-  /* margin-top: 140px; */
-  margin-left: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
-  border: 1px solid black;
-}
-
 .transaction {
   position: relative;
   background-color: #1b1b1b;
@@ -157,11 +141,81 @@ body {
   margin-top: 10x;
   color: #8739f9;
   font-size: small;
-  border-radius: 10%;
+  border-radius: 20px;
+}
+
+#transaction_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.trans_input {
+  grid-column: span 2;
+  order: 1;
+}
+
+#trans_inputAndButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trans_amount {
+  margin-bottom: 50px;
+}
+
+#trans_buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+#goal-bar {
+  background-color: #8739f9;
+  height: 50px;
+  margin-left: 0px;
+  border-radius: 20px;
+  max-width: 100%;
+}
+.goal_info {
+  background-color: #1b1b1b;
+  height: 50px;
+  width: 80%;
+  color: #8739f9;
+  text-align: center;
+  margin-left: 10px;
+  border-radius: 20px;
+}
+
+#trans_amount {
+  width: 280px;
+  margin-left: 0px;
+  margin-top: 30px;
+  position: absolute;
+}
+
+.transaction-button {
+  margin-left: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1px solid black;
+}
+
+#deposit-button {
+  margin-left: 0px;
+}
+
+#withdrawal-button {
+  margin-left: 48px;
 }
 
 p {
   margin: 0;
+  padding-left: 15px;
 }
 
 .close-button {

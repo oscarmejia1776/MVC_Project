@@ -94,7 +94,7 @@ server.get("/transactions/:user_id", (req, res) => {
   }
 
   db.query(
-    "SELECT * FROM transactions WHERE user_id = $1 ORDER BY date DESC",
+    "SELECT * FROM transactions WHERE user_id = $1 ORDER BY date ASC",
     [user_id],
     (error, result) => {
       res.send(result.rows);

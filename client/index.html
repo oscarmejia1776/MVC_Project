@@ -10,13 +10,16 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <script defer src="app.js"></script>
     <title>Full Stack Project</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a style="color: #C651CD" class="navbar-brand" href="#">Piggy Bank</a>
+        <a style="color: #C651CD" class="navbar-brand">Piggy Bank</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -36,9 +39,12 @@
         </div>
       </div>
     </nav>
-    <img src="/piggy-bank.png" alt="picture of a piggy bank">
-    <div class="intro-statement">
-      <p>Start saving and reaching your financial goals with our interactive piggy bank. Take control of your savings journey and watch your money grow.</p>
+  <div id="container">
+    <div class="intro-statement"><img src="/piggy-bank.png" alt="picture of a piggy bank"></div>
+
+    <div id="intro-text" class="intro-statement">
+      <p id="large-text" style="font-family: 'Montserrat', sans-serif;">Take Control of Your Finances with Piggy Bank.</p>
+      <p id = "small-text" style="font-family: 'Montserrat', sans-serif;">Start your savings journey now.</p>
     </div>
 
       <div id="start-box" class="login-box" style="color: rgba(255, 255, 255, 0.96); text-align: center;">
@@ -56,7 +62,7 @@
         <div id="newPassword" class="input-group password">
           <input
             id="newPassword-input"
-            type="text"
+            type="password"
             class="form-control"
             placeholder="Create Password"
             aria-label="Password"
@@ -82,7 +88,7 @@
         <div id="Password" class="input-group password">
           <input
             id="password-input"
-            type="text"
+            type="password"
             class="form-control"
             placeholder="Password"
             aria-label="Password"
@@ -96,25 +102,29 @@
       <div id="piggy_bank">
         <div id="grid_container">
           <div id="goal_display" class="item goal">
-            <div id="goal-ratio" class="goal_info"></div>
-            <div  id="savings" class="goal_info"></div>
+            <div id="goal-ratio" class="goal_info">
+              <div id="goal-bar"></div>
+            </div>
+            <div id="savings" class="goal_info" style="padding-top: 10px;"></div>
             <form  id="actual-goal" class="goal_info">
-              <input id="goal-input" style="background-color: #1B1B1B; color: #8739F9;"></input>
+              <input id="goal-input" style="background-color: #1B1B1B; color: #8739F9; text-align: center; border: none; margin-top: 10px;"></input>
             </form>
           </div>
           <div id="transaction_history" class="item trans_history overflow-auto"></div>
           <div id="transaction_input" class="item trans_input">
-            <div id="trans_amount" class="input-group">
+            <div id="trans_inputAndButtons">
+            <div id="trans_amount">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Type in Amount"
                 aria-label="Password"
                 aria-describedby="basic-addon1"
-                style="background-color: #363636; color:#C651CD"
+                style="background-color: #363636; color:#C651CD; width: 100%; text-align: center;"
               />
             </div>
-            <button
+            <div id="trans_buttons">
+              <button
               id="deposit-button"
               class="btn btn-success transaction-button btn-sm"
               type="button"
@@ -130,8 +140,10 @@
             </button>
           </div>
         </div>
+          </div>
+        </div>
       </div>
-    </div>
+  </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

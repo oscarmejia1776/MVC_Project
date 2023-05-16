@@ -1,6 +1,7 @@
 var USER_ID;
 var totalAmount = 0;
 var goalAmount = 0;
+let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
 ///////////////////////createTransaction Function/////////////////////////////////////////
 function createTransaction(obj) {
   const DATE_OBJ = new Date(obj.date);
@@ -28,6 +29,8 @@ function createTransaction(obj) {
           console.log(amount);
           totalAmount -= amount;
           $("#savings").text(`Total: $${totalAmount}`);
+          let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
+          $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
 
           // Send DELETE request to remove transaction from the database
           fetch(`/transactions/${transactionId}`, {
@@ -56,11 +59,13 @@ function createTransaction(obj) {
 $("#signup").on("click", () => {
   $("#start-box").show();
   $("#login-box").hide();
+  $(".intro-statement").hide();
 });
 
 $("#start").on("click", () => {
   $("#login-box").show();
   $("#start-box").hide();
+  $(".intro-statement").hide();
 });
 ///////////////////////////Create New User/////////////////////////////////////////////
 $("#create").on("click", () => {
@@ -121,6 +126,8 @@ let showPiggyBank = (userId) => {
       for (let i = 0; i < data.length; i++) {
         createTransaction(data[i]);
       }
+      let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
+      $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
       $("#savings").text(`Savings: $${totalAmount}`);
       $("#goal-input").val(goalAmount);
     });
@@ -194,6 +201,8 @@ $("#deposit-button").on("click", () => {
       //create another transaction div here and add it into transaction history
       createTransaction(data);
       $("#savings").text(`Total: $${totalAmount}`);
+      let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
+      $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
     });
 });
 
@@ -224,6 +233,8 @@ $("#withdrawal-button").on("click", () => {
       //create another transaction div here and add it into transaction history
       createTransaction(data);
       $("#savings").text(`Total: $${totalAmount}`);
+      let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
+      $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
     });
 });
 
@@ -246,6 +257,8 @@ $("#actual-goal").on("submit", (event) => {
       console.log("Goal Updated", data);
       goalAmount = goal;
       $("#goal-input").val(goalAmount);
+      let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
+      $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
     })
     .catch((error) => {
       console.error("Error updating goal amount", error);
