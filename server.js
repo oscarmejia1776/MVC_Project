@@ -51,12 +51,14 @@ server.post("/users", (req, res) => {
     });
 });
 
-//////////////////////////Get Users Password////////////////////////////
+//////////////////////////Compare Users Password////////////////////////////
 //Also requesting id so user_id variable can be stored on the front end in order to make transaction requests.
-server.get("/users/:username", (req, res) => {
+// Get Users Password and compare on the backend
+server.post("/users/:username", (req, res) => {
   const username = req.params.username;
+  const password = req.body.password;
 
-  if (!username) {
+  if (!username || !password) {
     res.sendStatus(422);
     return;
   }
@@ -66,9 +68,18 @@ server.get("/users/:username", (req, res) => {
     [username],
     (error, result) => {
       if (result.rows.length === 0) {
-        res.sendStatus(404);
+        res
+          .status(404)
+          .send("Username Does Not Exist Please Signup or Try Again");
       } else {
-        res.send(result.rows[0]);
+        const storedPassword = result.rows[0].password;
+        const isAuthenticated = password === storedPassword;
+
+        res.send({
+          isAuthenticated,
+          id: result.rows[0].id,
+          goal: result.rows[0].goal,
+        });
       }
     }
   );

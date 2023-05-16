@@ -73,6 +73,9 @@ $("#create").on("click", () => {
     goal: 0,
   };
 
+  // Empty the error message paragraph
+  $("#start-box p.error-message").empty();
+
   fetch(`/users`, {
     method: "POST",
     headers: {
@@ -80,10 +83,22 @@ $("#create").on("click", () => {
     },
     body: JSON.stringify(newUserData),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 422) {
+        throw new Error("Username Already Taken");
+      }
+      return res.json();
+    })
     .then((data) => {
       USER_ID = data.id;
       showPiggyBank(USER_ID);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      // Append the error message paragraph to start-box div
+      $("#start-box").append(
+        "<p class='error-message'>" + error.message + "</p>"
+      );
     });
 });
 
@@ -109,30 +124,48 @@ let showPiggyBank = (userId) => {
       $("#savings").text(`Savings: $${totalAmount}`);
       $("#goal-input").val(goalAmount);
     });
+  $("#start").hide();
+  $("#signup").hide();
 };
 ///////////////////Login Button////////////////////////////
 $("#login-button").on("click", () => {
-  let username = $("#Username input").val();
-  let password = $("#Password input").val();
+  let username = $("#username-input").val();
+  let password = $("#password-input").val();
+
+  // Empty the error message paragraph
+  $("#login-box p.error-message").empty();
 
   fetch(`/users/${username}`, {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ password }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 404) {
+        throw new Error("Username does not exist. Please signup or try again");
+      }
+      return res.json();
+    })
     .then((data) => {
       console.log("user data", data);
-      const STORED_PASSWORD = data.password;
+      const isAuthenticated = data.isAuthenticated;
       USER_ID = data.id;
       goalAmount = Number(data.goal);
 
-      if (password === STORED_PASSWORD) {
+      if (isAuthenticated) {
         showPiggyBank(USER_ID);
       } else {
-        console.log("Password Input Was Incorrect");
+        throw new Error("Password Input Was Incorrect. Please try again");
       }
+    })
+    .catch((error) => {
+      console.log(error.message);
+      // Append the error message paragraph
+      $("#login-box").append(
+        "<p class='error-message'>" + error.message + "</p>"
+      );
     });
 });
 //////////////////////Creating New Deposit Transaction///////////////

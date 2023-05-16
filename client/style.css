@@ -2,6 +2,17 @@ body {
   background-color: #363636;
 }
 
+.container img {
+  width: 200px; /* Adjust the width as needed */
+  margin-right: 20px; /* Add margin between the image and the statement */
+}
+
+.container .intro-statement {
+  flex: 1; /* Allow the statement to grow and fill the remaining space */
+  height: 512px;
+  width: 512px;
+}
+
 .navbar {
   background-color: #100f10;
   color: #c651cd;
@@ -102,6 +113,7 @@ body {
 }
 
 .trans_history {
+  max-height: 450px;
   grid-row: span 2;
 }
 

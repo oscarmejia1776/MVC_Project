@@ -36,8 +36,12 @@
         </div>
       </div>
     </nav>
-    <div id="container">
-      <div id="start-box" class="login-box">
+    <img src="/piggy-bank.png" alt="picture of a piggy bank">
+    <div class="intro-statement">
+      <p>Start saving and reaching your financial goals with our interactive piggy bank. Take control of your savings journey and watch your money grow.</p>
+    </div>
+
+      <div id="start-box" class="login-box" style="color: rgba(255, 255, 255, 0.96); text-align: center;">
         <div id="newUsername" class="input-group username">
           <input
             id="newUsername-input"
@@ -63,7 +67,7 @@
           Login
         </button>
       </div>
-      <div id="login-box" class="login-box">
+      <div id="login-box" class="login-box" style="color: rgba(255, 255, 255, 0.96); text-align: center;">
         <div id="Username" class="input-group username">
           <input
             id="username-input"
@@ -98,7 +102,7 @@
               <input id="goal-input" style="background-color: #1B1B1B; color: #8739F9;"></input>
             </form>
           </div>
-          <div id="transaction_history" class="item trans_history"></div>
+          <div id="transaction_history" class="item trans_history overflow-auto"></div>
           <div id="transaction_input" class="item trans_input">
             <div id="trans_amount" class="input-group">
               <input
@@ -112,14 +116,14 @@
             </div>
             <button
               id="deposit-button"
-              class="btn btn-success transaction-button"
+              class="btn btn-success transaction-button btn-sm"
               type="button"
             >
               Deposit
             </button>
             <button
               id="withdrawal-button"
-              class="btn btn-danger transaction-button"
+              class="btn btn-danger transaction-button btn-sm"
               type="button"
             >
               Withdrawl
