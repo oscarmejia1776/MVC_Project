@@ -128,7 +128,7 @@ let showPiggyBank = (userId) => {
       }
       let goalDifferencePercentage = (totalAmount / goalAmount) * 100;
       $("#goal-bar").css("width", `${goalDifferencePercentage}%`);
-      $("#savings").text(`Savings: $${totalAmount}`);
+      $("#savings").text(`Savings: $   ${totalAmount}`);
       $("#goal-input").val(goalAmount);
     });
   $("#start").hide();
