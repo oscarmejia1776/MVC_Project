@@ -72,6 +72,16 @@ $("#create").on("click", () => {
   let username = $("#newUsername-input").val();
   let password = $("#newPassword-input").val();
 
+  $("#start-box p.error-message").empty();
+
+  if (username === "" || password === "") {
+    // Append the error message paragraph to start-box div
+    $("#start-box").append(
+      "<p class='error-message'>Please fill in both username and password fields</p>"
+    );
+    return; // Exit the function
+  }
+
   const newUserData = {
     username: username,
     password: password,
@@ -138,6 +148,15 @@ let showPiggyBank = (userId) => {
 $("#login-button").on("click", () => {
   let username = $("#username-input").val();
   let password = $("#password-input").val();
+
+  $("#login-box p.error-message").empty();
+
+  if (username === "" || password === "") {
+    $("#login-box").append(
+      "<p class='error-message'>Please fill in both username and password fields</p>"
+    );
+    return;
+  }
 
   // Empty the error message paragraph
   $("#login-box p.error-message").empty();
